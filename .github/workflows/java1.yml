@@ -21,4 +21,5 @@ jobs:
         cache: 'maven' # Caches Maven dependencies to speed up workflow
 
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      working-directory: ./github-action-test
+      run: mvn -B package

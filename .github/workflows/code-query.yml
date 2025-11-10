@@ -54,12 +54,9 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
-        # 使用仓库内的自定义查询目录（包含 qlpack.yml）
-        # 以及官方扩展与质量查询集
-        queries:
-          - ./.github/.codeql/queries/customize/
-          - security-extended
-          - security-and-quality
+        # 使用仓库内的自定义查询目录（包含 qlpack.yml），以及官方扩展与质量查询集
+        # 注意：GitHub Actions 的 with 输入不支持 YAML 列表，这里应为逗号分隔的字符串
+        queries: ./.github/.codeql/queries/customize/,security-extended,security-and-quality
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v3
